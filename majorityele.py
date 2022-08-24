@@ -19,3 +19,22 @@ class Solution:
                 ele = key
                 
         return ele
+
+    # O(n) time and O(1) space solution
+    class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        # set result and count variables
+        res, count = 0,0
+        
+        # loop through nums
+        for n in nums:
+            # if count is 0, result is set to n
+            if count == 0:
+                res = n
+            
+            # if n equals result, then increment the count, else decrement
+            if n == res:
+                count += 1
+            else:
+                count -= 1
+        return res
