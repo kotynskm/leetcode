@@ -35,17 +35,17 @@ class Solution:
         que = [(p, q)]
         
         while que:
-            # pop nodes
             node1, node2 = que.pop(0)
-            # if both are None
+            
             if not node1 and not node2:
-                return True
-            # if only one is None
-            if not node1 or not node2:
+                continue
+            elif None in [node1, node2]:
                 return False
-            # if the values are not equal
-            if node1.val != node2.val:
-                return False
-            # append left and right nodes
+            else:
+                if node1.val != node2.val:
+                    return False
+            
             que.append((node1.left, node2.left))
-            que.append((node1.right, node2.right))  
+            que.append((node1.right, node2.right))     
+            
+        return True
