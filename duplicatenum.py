@@ -20,4 +20,19 @@ class Solution:
                 l += 1
                 r += 1
 
+# this is a two pointer solution - O(n)
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        l, r = 0, 1
+        
+        while l < len(nums):
+            if nums[l] != nums[r]:
+                r += 1
+            else:
+                return nums[l]
+            
+            if r == len(nums):
+                l += 1
+                r = l + 1
+                
 
