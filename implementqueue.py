@@ -24,6 +24,33 @@ class MyQueue:
     def empty(self) -> bool:
         return len(self.elements) == 0
 
+# this is implementation of a queue using 2 stacks
+class MyQueue:
+
+    def __init__(self):
+        self.s1 = []
+        self.s2 = []
+
+    def push(self, x: int) -> None:
+        # if items already in s1, we must move the items over to s2
+        while self.s1:
+            self.s2.append(self.s1.pop())
+        # then append the item to s1
+        self.s1.append(x)
+        
+        # now move the items back over to s1 from s2 (the items that would have been first in the queue)
+        while self.s2:
+            self.s1.append(self.s2.pop())
+
+    def pop(self) -> int:
+        return self.s1.pop()
+        
+    def peek(self) -> int:
+        return self.s1[-1]
+
+    def empty(self) -> bool:
+        return not self.s1
+
 
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()
