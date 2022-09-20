@@ -26,6 +26,38 @@ class MinStack:
     def getMin(self) -> int:
         return min(self.stack)
 
+# O(1) min stack
+class MinStack:
+
+    def __init__(self):
+        self.stack = []
+        self.minStack = []
+        
+    def push(self, val: int) -> None:
+        # push val onto stack
+        self.stack.append(val)
+        # if items in the minStack, get the min between val and min in stack, else get the min between val and val if minStack is empty
+        if self.minStack:
+            val = min(self.minStack[-1], val)
+        else:
+            val = min(val, val)
+            
+        self.minStack.append(val)
+
+    def pop(self) -> None:
+        # pop item off both stack and minStack
+        self.stack.pop()
+        self.minStack.pop()
+
+    def top(self) -> int:
+        # return last item in stack
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        # return last item in the minStack
+        return self.minStack[-1]
+        
+
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
