@@ -22,3 +22,22 @@ class Solution:
                 result.append(num)
                 if len(result) == k:
                     return result
+
+# solution using a heap
+from heapq import *
+
+
+def find_k_largest_numbers(nums, k):
+  minHeap = []
+
+  # insert first k elements
+  for i in range(k):
+    heappush(minHeap, nums[i])
+
+  # loop rest of elements and compare to what is in heap
+  for j in range(k, len(nums)):
+    if nums[j] > minHeap[0]:
+      heappop(minHeap)
+      heappush(minHeap, nums[j])
+
+  return minHeap
