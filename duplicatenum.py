@@ -35,4 +35,25 @@ class Solution:
                 l += 1
                 r = l + 1
                 
+# Floyd's tortoise and hare algo solution
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        # using floyds toroise and hare algo
+        slow = nums[0]
+        fast = nums[0]
+        # when this loop breaks, both should be at meetup point
+        while(True):
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if slow == fast:
+                break
+        # second part of algo - start 1 pointer at head, other pointer at meetup point (can use slow or fast, they are both at meetup)        
+        pointer1 = nums[0]
+        pointer2 = slow
+        # loop incrementing each pointer by 1 until they meet each other
+        while pointer1 != pointer2:
+            pointer1 = nums[pointer1]
+            pointer2 = nums[pointer2]
+            
+        return pointer1
 
