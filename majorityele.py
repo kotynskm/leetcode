@@ -38,3 +38,24 @@ class Solution:
             else:
                 count -= 1
         return res
+
+    class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        # solve without extra space
+        # set variable to first num, and count variable to 0
+        # loop over nums and see if num is the candidate
+        # if it is, increment the count
+        # if it's not, decrement the count
+        # if count ever reaches 0, then reset the candidate to the new num, and count to 1
+        
+        candidate, count = nums[0], 0
+        
+        for num in nums:
+            if num == candidate:
+                count += 1
+            else:
+                count -= 1
+            
+            if count == 0:
+                candidate, count = num, 1
+        return candidate
