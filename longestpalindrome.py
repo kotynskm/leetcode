@@ -20,3 +20,30 @@ class Solution:
             if result % 2 == 0 and val % 2 == 1:
                 result += 1
         return result
+
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        # make a count d of letter counts
+        # loop count dict
+        # if count is even, add it to total count
+        # if number is odd add value - 1 ( we leave the odd 1 out) and increment count of odd numbers
+        # if odd count > 1 then we add an additional 1 for the middle char of the palindrome
+        
+        d = {}
+        longest = 0
+        countOdds = 0
+        
+        for char in s:
+            d[char] = 1 + d.get(char, 0)
+            
+        for char in d:
+            if d[char] % 2 == 0:
+                longest += d[char]
+            else:
+                longest += d[char] - 1
+                countOdds += 1
+            
+        if countOdds:
+            longest += 1
+                
+        return longest
